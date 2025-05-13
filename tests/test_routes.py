@@ -143,7 +143,7 @@ class TestAccountService(TestCase):
     def test_get_account_list(self):
         """It should Get a list of Accounts"""
         self._create_accounts(5)
-        resp = self.client.get(BASE_URL,content_type="application/json")
+        resp = self.client.get(BASE_URL, content_type="application/json")
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(len(data), 5)
@@ -186,7 +186,7 @@ class TestAccountService(TestCase):
         }
         for key, value in headers.items():
             self.assertEqual(response.headers.get(key), value)
-    
+
     def test_cors_security(self):
         """It should return a CORS header"""
         response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
